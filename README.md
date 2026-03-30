@@ -18,9 +18,7 @@ The Vector Engine maps textual ideas into a dense $d$-dimensional vector space u
 * **Novelty:** The novelty of an idea $i$ is defined as its cosine distance from the centroid of the batch embeddings. Let the centroid be $C = \frac{1}{N} \sum_{j=1}^N e_j$, normalized such that $C \leftarrow \frac{C}{\|C\|_2}$. The novelty score $\mathcal{N}_i$ is computed as:
     $$\mathcal{N}_i = \max(0, 1 - e_i \cdot C^T)$$
 
-* **Diversity Contribution:** The diversity contribution $\mathcal{D}_i$ of an idea $i$ represents its average distance from all other generated ideas within the same prompt batch:
-    $$\mathcal{D}_i = \frac{1}{N-1} \sum_{j \neq i} \max(0, 1 - e_i \cdot e_j^T)$$
-
+* **Diversity Contribution:** The diversity contribution $\mathcal{D}_i$ of an idea $i$ represents its average distance from all other generated ideas within the same prompt batch.
 #### B. Logic Engine (`engines/logic_engine.py`)
 The Logic Engine employs a rigorous, rule-based approach to constraint satisfaction.
 1.  **Constraint Extraction:** Given a context $C_{text}$ and a task $T_{text}$, the LLM extracts a set of $K$ atomic, verifiable constraints $C = \{c_1, c_2, \dots, c_K\}$.
